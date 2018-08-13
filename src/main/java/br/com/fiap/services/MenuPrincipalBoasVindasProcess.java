@@ -55,7 +55,9 @@ public class MenuPrincipalBoasVindasProcess implements UpdatesListener {
 		
 		updates.forEach(update -> {
 			
-			System.out.println(update.message().messageId()+" - "+update.message().text());
+			if(App.updateId>=updates.get(updates.size()-1).updateId()) return;
+			
+			App.updateId = updates.get(updates.size()-1).updateId();
 			
 			for (String opcao : opcoes) {
 				if(update.message().text().equals(opcao)) {
@@ -73,7 +75,7 @@ public class MenuPrincipalBoasVindasProcess implements UpdatesListener {
 			
 		});
 		
-		return updates.get(updates.size()-1).updateId();
+		return App.updateId;
 	}
 
 }

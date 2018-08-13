@@ -43,6 +43,11 @@ public class MenuCriarContaProcess implements UpdatesListener {
 		
 		for (Update update : updates) {
 			
+			if(App.updateId>=updates.get(updates.size()-1).updateId()) 
+				continue;
+			
+			App.updateId = updates.get(updates.size()-1).updateId();
+			
 			if(update.message().text().equals("Menu principal")){
 				new MenuPrincipalBoasVindas().process();
 			}
@@ -216,7 +221,7 @@ public class MenuCriarContaProcess implements UpdatesListener {
 			
 		}
 		
-		return updates.get(updates.size()-1).updateId();
+		return App.updateId;
 	}
 
 }

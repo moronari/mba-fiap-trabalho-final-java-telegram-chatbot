@@ -50,7 +50,7 @@ public class App
 	
 	public final static Long CHAT_ID = 600401980l;
 	
-	public final static String MESSAGE_BOAS_VENDAS = "Bem vindo ao banco C6Bank";
+	public final static String MESSAGE_BOAS_VENDAS = "Bem vindo ao banco Teste";
 	
 	public final static String MENU_BOAS_VINDAS = "Boas vindas";
 	public final static String MENU_PRINCIPAL = "Menú principal";
@@ -116,8 +116,8 @@ public class App
     	
     	
     	telegramBot = new TelegramBot.Builder(apiKey)
-    			.okHttpClient(new OkHttpClient())	
-    			.updateListenerSleep(1000)
+//    			.okHttpClient(new OkHttpClient())	
+//    			.updateListenerSleep(1000)
     			.build();
     	
 		new MenuPrincipalBoasVindas().process();

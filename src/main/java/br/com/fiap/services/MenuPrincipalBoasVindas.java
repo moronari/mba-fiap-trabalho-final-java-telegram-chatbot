@@ -60,34 +60,34 @@ public class MenuPrincipalBoasVindas implements MenuInterface {
 		App.telegramBot.setUpdatesListener(new MenuPrincipalBoasVindasProcess());
 		
 		
-		App.telegramBot.setUpdatesListener(new UpdatesListener() {
-			
-			@Override
-			public int process(List<Update> updates) {
-				
-				updates.forEach(update -> {
-					
-					System.out.println(update.message().messageId()+" - "+update.message().text());
-					
-					for (String opcao : opcoes) {
-						if(update.message().text().equals(opcao)) {
-							try {
-								
-								System.out.println("selecionada opção: "+opcao);
-								
-								MenuFactory.getInstance(opcao).process();
-								
-							} catch (Exception e) {
-								System.out.println(e.getMessage());
-							}
-						}
-					}
-					
-				});
-				
-				return updates.get(updates.size()-1).updateId();
-			}
-		});
+//		App.telegramBot.setUpdatesListener(new UpdatesListener() {
+//			
+//			@Override
+//			public int process(List<Update> updates) {
+//				
+//				updates.forEach(update -> {
+//					
+//					System.out.println(update.message().messageId()+" - "+update.message().text());
+//					
+//					for (String opcao : opcoes) {
+//						if(update.message().text().equals(opcao)) {
+//							try {
+//								
+//								System.out.println("selecionada opção: "+opcao);
+//								
+//								MenuFactory.getInstance(opcao).process();
+//								
+//							} catch (Exception e) {
+//								System.out.println(e.getMessage());
+//							}
+//						}
+//					}
+//					
+//				});
+//				
+//				return updates.get(updates.size()-1).updateId();
+//			}
+//		});
 		
 	}
 
