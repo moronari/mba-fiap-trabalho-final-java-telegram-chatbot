@@ -10,6 +10,7 @@ import br.com.fiap.services.MenuExibicaoSaldo;
 import br.com.fiap.services.MenuExibicaoTarifas;
 import br.com.fiap.services.MenuInclusaoDeDependente;
 import br.com.fiap.services.MenuModificacaoDeConta;
+import br.com.fiap.services.MenuPrincipal;
 import br.com.fiap.services.MenuSaque;
 import br.com.fiap.services.MenuSolicitacaoDeEmprestimo;
 import br.com.fiap.services.MenuSolicitacaoDeExtrato;
@@ -21,6 +22,7 @@ public class MenuFactory {
 	public static MenuInterface getInstance(String option) throws Exception
 	{
 		switch (option) {
+			case App.MENU_PRINCIPAL: instance = new MenuPrincipal(); break;
 			case App.MENU_CRIAR_CONTA: instance = new MenuCriarConta(); break;
 			case App.MENU_MODIFICACAO_DE_CONTA: instance = new MenuModificacaoDeConta(); break;
 			case App.MENU_INCLUSAO_DEPENDENTE: instance = new MenuInclusaoDeDependente(); break;
