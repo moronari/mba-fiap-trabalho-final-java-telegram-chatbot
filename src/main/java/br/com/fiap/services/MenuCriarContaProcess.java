@@ -50,6 +50,12 @@ public class MenuCriarContaProcess implements UpdatesListener {
 			
 			if(update.message().text().equals("Menu principal")){
 				new MenuPrincipalBoasVindas().process();
+				continue;
+			}
+			
+			if(update.message().text().equals("Sair")){
+				new MenuPrincipalBoasVindas().process();
+				continue;
 			}
 			
 			switch (step) {

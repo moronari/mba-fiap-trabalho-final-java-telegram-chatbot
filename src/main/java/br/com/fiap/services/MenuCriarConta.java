@@ -20,14 +20,23 @@ import br.com.fiap.factory.MenuInterface;
 
 public class MenuCriarConta implements MenuInterface {
 		
+	private ReplyKeyboardMarkup menuOpcoes = new ReplyKeyboardMarkup(
+			new String[]{"Sair"}
+		)
+		.oneTimeKeyboard(true)
+		.resizeKeyboard(true)
+		.oneTimeKeyboard(true)
+		.selective(true);
+	
 	@Override
 	public void process() {
 		
 		App.telegramBot.removeGetUpdatesListener();
 		
-		App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha os dados a seguir"));
+		App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha os dados a seguir")
+				.replyMarkup(menuOpcoes));
     	App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha seu CPF"));
-    	App.telegramBot.setUpdatesListener(new MenuCriarContaProcess());
+    	App.telegramBot.setUpdatesListener(new MenuCriarContaProcess(), new GetUpdates().limit(5).offset(App.updateId));
 		
 	}
 	

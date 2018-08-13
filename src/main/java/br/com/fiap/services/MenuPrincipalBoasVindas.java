@@ -5,6 +5,7 @@ import java.util.List;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
+import com.pengrad.telegrambot.request.GetUpdates;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.SendResponse;
 
@@ -43,6 +44,7 @@ public class MenuPrincipalBoasVindas implements MenuInterface {
 			new String[]{App.MENU_EXIBICAO_RETIRADAS},
 			new String[]{App.MENU_EXIBICAO_TARIFAS}
 		)
+		.oneTimeKeyboard(true)
 		.resizeKeyboard(true)
 		.oneTimeKeyboard(true)
 		.selective(true);
@@ -57,7 +59,7 @@ public class MenuPrincipalBoasVindas implements MenuInterface {
 		
 		SendResponse sendResponse = App.telegramBot.execute(message);
 		
-		App.telegramBot.setUpdatesListener(new MenuPrincipalBoasVindasProcess());
+		App.telegramBot.setUpdatesListener(new MenuPrincipalBoasVindasProcess(), new GetUpdates().limit(5).offset(App.updateId));
 		
 		
 //		App.telegramBot.setUpdatesListener(new UpdatesListener() {
