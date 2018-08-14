@@ -2,6 +2,7 @@ package br.com.fiap.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Cliente implements Serializable {
 
@@ -67,15 +68,7 @@ public class Cliente implements Serializable {
 
 	public String getDataNascFormat() {
 		
-		StringBuilder sb = new StringBuilder();
-		
-		sb.append(dataNascimento.getDayOfMonth());
-		sb.append("/");
-		sb.append(dataNascimento.getMonth());
-		sb.append("/");
-		sb.append(dataNascimento.getYear());
-		
-		return sb.toString();
+		return dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 	}
 
 	@Override

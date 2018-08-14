@@ -85,6 +85,8 @@ public class App
 			MENU_EXIBICAO_TARIFAS
 		};
 	
+	public static int updatesLimit = 3;
+	
 	public static int updateId = 0;
 	
     public static void main( String[] args )

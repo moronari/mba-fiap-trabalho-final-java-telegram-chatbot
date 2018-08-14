@@ -1,13 +1,32 @@
 package br.com.fiap.services;
 
+import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
+import com.pengrad.telegrambot.request.GetUpdates;
+import com.pengrad.telegrambot.request.SendMessage;
+
+import br.com.fiap.app.App;
 import br.com.fiap.factory.MenuInterface;
 
 public class MenuInclusaoDeDependente implements MenuInterface {
 	
+	private ReplyKeyboardMarkup menuOpcoes = new ReplyKeyboardMarkup(
+			new String[]{"Sair"}
+		)
+		.oneTimeKeyboard(true)
+		.resizeKeyboard(true)
+		.oneTimeKeyboard(true)
+		.selective(true);
+	
 	@Override
 	public void process() {
-		// TODO Auto-generated method stub
-		System.out.println("Inclusão dependentes");
+		
+		App.telegramBot.removeGetUpdatesListener();
+		
+		App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha os dados a seguir")
+				.replyMarkup(menuOpcoes));
+    	App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha seu CPF do titular da conta"));
+    	App.telegramBot.setUpdatesListener(new MenuInclusaoDeDependenteProcess(), new GetUpdates().limit(App.updatesLimit).offset(App.updateId));
+		
 	}
 
 }

@@ -36,7 +36,7 @@ public class MenuCriarConta implements MenuInterface {
 		App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha os dados a seguir")
 				.replyMarkup(menuOpcoes));
     	App.telegramBot.execute(new SendMessage(App.CHAT_ID, "Preencha seu CPF"));
-    	App.telegramBot.setUpdatesListener(new MenuCriarContaProcess(), new GetUpdates().limit(5).offset(App.updateId));
+    	App.telegramBot.setUpdatesListener(new MenuCriarContaProcess(), new GetUpdates().limit(App.updatesLimit).offset(App.updateId));
 		
 	}
 	
